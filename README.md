@@ -75,3 +75,39 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+## Déploiement
+
+### Récapitulatif du fonctionnement
+
+Cette application utilise GitHub Actions pour automatiser le processus CI/CD:
+1. Tests et linting à chaque push ou pull request
+2. Construction et publication d'une image Docker sur Docker Hub (branche master uniquement)
+3. Déploiement automatique sur Render.com (branche master uniquement)
+
+### Configuration requise
+
+Pour que le déploiement fonctionne correctement, vous devez configurer:
+- Un compte Docker Hub avec un repository nommé "oc-lettings"
+- Un service Web sur Render.com configuré pour déployer l'application
+- Les secrets GitHub suivants:
+  - DOCKERHUB_USERNAME: votre nom d'utilisateur Docker Hub
+  - DOCKERHUB_TOKEN: votre token d'accès Docker Hub
+  - RENDER_API_KEY: votre clé API Render
+  - RENDER_SERVICE_ID: l'identifiant de votre service sur Render
+
+### Étapes de déploiement
+
+#### Déploiement automatique
+1. Faites vos modifications
+2. Validez et poussez votre code sur la branche master
+3. GitHub Actions exécutera automatiquement les tests, construira l'image, la publiera sur Docker Hub et déploiera sur Render
+
+#### Déploiement manuel
+Pour extraire et exécuter l'image Docker en local:
+```bash
+# Extraire l'image depuis Docker Hub
+docker pull votre-username/oc-lettings:latest
+
+# Exécuter l'image
+docker run -p 8000:8000 -e PORT=8000 -e DEBUG=True votre-username/oc-lettings:latest
