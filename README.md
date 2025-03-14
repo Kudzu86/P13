@@ -1,6 +1,8 @@
+# Orange County Lettings
+
 ## Résumé
 
-Site web d'Orange County Lettings
+Site web d'Orange County Lettings, une plateforme de location immobilière.
 
 ## Développement local
 
@@ -60,8 +62,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - Se connecter à la base de données `.open oc-lettings-site.sqlite3`
 - Afficher les tables dans la base de données `.tables`
 - Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
-  Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
+- Lancer une requête sur la table des profils, `select user_id, favorite_city from Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
 - `.quit` pour quitter
 
 #### Panel d'administration
@@ -96,6 +97,14 @@ Pour que le déploiement fonctionne correctement, vous devez configurer:
   - RENDER_API_KEY: votre clé API Render
   - RENDER_SERVICE_ID: l'identifiant de votre service sur Render
 
+### Variables d'environnement sur Render.com
+
+Pour que l'application fonctionne correctement en production, configurez les variables d'environnement suivantes sur Render:
+- SECRET_KEY: une clé secrète pour Django
+- DEBUG: "False"
+- ALLOWED_HOSTS: votre-app.onrender.com,localhost,127.0.0.1
+- SENTRY_DSN: votre DSN Sentry (si surveillance Sentry configurée)
+
 ### Étapes de déploiement
 
 #### Déploiement automatique
@@ -107,7 +116,7 @@ Pour que le déploiement fonctionne correctement, vous devez configurer:
 Pour extraire et exécuter l'image Docker en local:
 ```bash
 # Extraire l'image depuis Docker Hub
-docker pull votre-username/oc-lettings:latest
+docker pull kudzuu/oc-lettings:latest
 
 # Exécuter l'image
-docker run -p 8000:8000 -e PORT=8000 -e DEBUG=True votre-username/oc-lettings:latest
+docker run -p 8000:8000 -e PORT=8000 -e DEBUG=True -e SECRET_KEY=your-secret-key -e ALLOWED_HOSTS=localhost,127.0.0.1 kudzuu/oc-lettings:latest
