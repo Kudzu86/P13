@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procédures de déploiement &mdash; Documentation OC Lettings 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7a28dfa3"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=d99ca74e"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Guide d’utilisation" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Description du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Guide de démarrage rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Structure de la base de données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Interfaces de programmation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Guide d’utilisation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Procédures de déploiement</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-de-deploiement">Architecture de déploiement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pipeline-ci-cd">Pipeline CI/CD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-requise">Configuration requise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploiement-manuel-et-tests">Déploiement manuel et tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surveillance-et-gestion-des-erreurs">Surveillance et gestion des erreurs</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Procédures de déploiement</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/deployment.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="procedures-de-deploiement">
+<h1>Procédures de déploiement<a class="headerlink" href="#procedures-de-deploiement" title="Link to this heading"></a></h1>
+<section id="architecture-de-deploiement">
+<h2>Architecture de déploiement<a class="headerlink" href="#architecture-de-deploiement" title="Link to this heading"></a></h2>
+<p>Le projet OC Lettings utilise un pipeline CI/CD complet avec les technologies suivantes :</p>
+<ul class="simple">
+<li><p><strong>GitHub Actions</strong> pour l’automatisation des tests et du déploiement</p></li>
+<li><p><strong>Docker</strong> pour la conteneurisation de l’application</p></li>
+<li><p><strong>Docker Hub</strong> pour le stockage des images Docker</p></li>
+<li><p><strong>Render</strong> pour l’hébergement de l’application</p></li>
+</ul>
+</section>
+<section id="pipeline-ci-cd">
+<h2>Pipeline CI/CD<a class="headerlink" href="#pipeline-ci-cd" title="Link to this heading"></a></h2>
+<p>Le pipeline de déploiement est composé de trois tâches principales :</p>
+<ol class="arabic simple">
+<li><p><strong>Test</strong> : Exécute les tests unitaires et vérifie la qualité du code
+* Lint avec flake8
+* Tests avec pytest
+* Vérification de la couverture de test (minimum 80%)</p></li>
+<li><p><strong>Build and Push</strong> : Crée et publie l’image Docker
+* Construction de l’image à partir du Dockerfile
+* Publication sur Docker Hub avec différents tags
+* Exécuté uniquement sur la branche master après réussite des tests</p></li>
+<li><p><strong>Deploy</strong> : Déploie l’application sur Render
+* Utilise l’API Render pour déclencher un déploiement
+* Exécuté uniquement sur la branche master après publication de l’image</p></li>
+</ol>
+</section>
+<section id="configuration-requise">
+<h2>Configuration requise<a class="headerlink" href="#configuration-requise" title="Link to this heading"></a></h2>
+<p>Pour configurer le pipeline CI/CD, vous devez :</p>
+<ol class="arabic simple">
+<li><p><strong>Créer un compte Docker Hub</strong>
+* Créer un repository nommé « oc-lettings »
+* Générer un token d’accès personnel</p></li>
+<li><p><strong>Créer un compte Render</strong>
+* Configurer un service Web basé sur Docker
+* Obtenir l’ID du service et une clé API</p></li>
+<li><p><strong>Configurer les secrets GitHub</strong>
+* <code class="docutils literal notranslate"><span class="pre">DOCKERHUB_USERNAME</span></code> : Nom d’utilisateur Docker Hub
+* <code class="docutils literal notranslate"><span class="pre">DOCKERHUB_TOKEN</span></code> : Token d’accès Docker Hub
+* <code class="docutils literal notranslate"><span class="pre">RENDER_API_KEY</span></code> : Clé API Render
+* <code class="docutils literal notranslate"><span class="pre">RENDER_SERVICE_ID</span></code> : ID du service Render</p></li>
+<li><p><strong>Configurer les variables d’environnement sur Render</strong>
+* <code class="docutils literal notranslate"><span class="pre">SECRET_KEY</span></code> : Clé secrète Django
+* <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> : « False » en production
+* <code class="docutils literal notranslate"><span class="pre">ALLOWED_HOSTS</span></code> : Domaine Render et localhost
+* <code class="docutils literal notranslate"><span class="pre">SENTRY_DSN</span></code> : URL de connexion Sentry</p></li>
+</ol>
+</section>
+<section id="deploiement-manuel-et-tests">
+<h2>Déploiement manuel et tests<a class="headerlink" href="#deploiement-manuel-et-tests" title="Link to this heading"></a></h2>
+<p><strong>Déploiement via GitHub</strong></p>
+<p>Pour déclencher un déploiement complet :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Votre message de commit&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
+</pre></div>
+</div>
+<p><strong>Test de l’image Docker en local</strong></p>
+<p>Pour tester l’image Docker localement :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Téléchargement de l&#39;image</span>
+docker<span class="w"> </span>pull<span class="w"> </span>kudzuu/oc-lettings:latest
+
+<span class="c1"># Exécution de l&#39;image</span>
+docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">DEBUG</span><span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">SECRET_KEY</span><span class="o">=</span>your-secret-key<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">ALLOWED_HOSTS</span><span class="o">=</span>localhost,127.0.0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>kudzuu/oc-lettings:latest
+</pre></div>
+</div>
+<p><strong>Test de modification et redéploiement</strong></p>
+<p>Pour tester le pipeline avec une modification simple :</p>
+<ol class="arabic simple">
+<li><p>Modifiez le titre dans un fichier template (par exemple, templates/index.html)</p></li>
+<li><p>Commitez et poussez vos modifications sur la branche master</p></li>
+<li><p>Vérifiez que le pipeline s’exécute correctement dans l’onglet Actions de GitHub</p></li>
+<li><p>Vérifiez que le site déployé affiche les changements après quelques minutes</p></li>
+</ol>
+</section>
+<section id="surveillance-et-gestion-des-erreurs">
+<h2>Surveillance et gestion des erreurs<a class="headerlink" href="#surveillance-et-gestion-des-erreurs" title="Link to this heading"></a></h2>
+<p>L’application utilise Sentry pour la surveillance des erreurs en production. Les erreurs et les logs importants sont automatiquement envoyés à Sentry.</p>
+<p>Pour configurer Sentry :</p>
+<ol class="arabic simple">
+<li><p>Créez un compte sur Sentry.io</p></li>
+<li><p>Créez un nouveau projet pour OC Lettings</p></li>
+<li><p>Récupérez le DSN du projet</p></li>
+<li><p>Ajoutez le DSN comme variable d’environnement sur Render</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Guide d’utilisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2025, AUER Eric.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
