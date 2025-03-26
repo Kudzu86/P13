@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interfaces de programmation &mdash; Documentation OC Lettings 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7a28dfa3"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=041d0952"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Guide d’utilisation" href="usage.html" />
+    <link rel="prev" title="Structure de la base de données" href="database.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Description du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation du projet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Guide de démarrage rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technologies.html">Technologies et langages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Structure de la base de données</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interfaces de programmation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure-des-vues">Structure des vues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-principal-oc-lettings-site">Module principal (oc_lettings_site)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-lettings">Module Lettings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-profiles">Module Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#organisation-des-urls">Organisation des URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Guide d’utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">Procédures de déploiement</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Interfaces de programmation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interfaces-de-programmation">
+<h1>Interfaces de programmation<a class="headerlink" href="#interfaces-de-programmation" title="Lien vers cette rubrique"></a></h1>
+<section id="structure-des-vues">
+<h2>Structure des vues<a class="headerlink" href="#structure-des-vues" title="Lien vers cette rubrique"></a></h2>
+<p>L’application est organisée autour de vues fonctionnelles réparties dans trois modules principaux.</p>
+<section id="module-principal-oc-lettings-site">
+<h3>Module principal (oc_lettings_site)<a class="headerlink" href="#module-principal-oc-lettings-site" title="Lien vers cette rubrique"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vue de la page d&#39;accueil principale.</span>
+
+<span class="sd">    Cette vue affiche la page d&#39;accueil avec les liens vers</span>
+<span class="sd">    les sections principales de l&#39;application.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;index.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="module-lettings">
+<h3>Module Lettings<a class="headerlink" href="#module-lettings" title="Lien vers cette rubrique"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vue de la liste des locations.</span>
+
+<span class="sd">    Affiche toutes les locations disponibles dans le système.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lettings_list</span> <span class="o">=</span> <span class="n">Letting</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lettings_list&#39;</span><span class="p">:</span> <span class="n">lettings_list</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;lettings/index.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">letting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">letting_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vue détaillée d&#39;une location.</span>
+
+<span class="sd">    Affiche les détails d&#39;une location spécifique identifiée par son ID.</span>
+<span class="sd">    Lève une 404 si la location n&#39;existe pas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">letting</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Letting</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">letting_id</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">letting</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+        <span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="n">letting</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;lettings/letting.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="module-profiles">
+<h3>Module Profiles<a class="headerlink" href="#module-profiles" title="Lien vers cette rubrique"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vue de la liste des profils.</span>
+
+<span class="sd">    Affiche tous les profils utilisateurs disponibles.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">profiles_list</span> <span class="o">=</span> <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;profiles_list&#39;</span><span class="p">:</span> <span class="n">profiles_list</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;profiles/index.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">profile</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vue détaillée d&#39;un profil.</span>
+
+<span class="sd">    Affiche les détails d&#39;un profil utilisateur spécifique.</span>
+<span class="sd">    Lève une 404 si le profil n&#39;existe pas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Profile</span><span class="p">,</span> <span class="n">user__username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="n">profile</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;profiles/profile.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="organisation-des-urls">
+<h2>Organisation des URLs<a class="headerlink" href="#organisation-des-urls" title="Lien vers cette rubrique"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># URLs principales (oc_lettings_site/urls.py)</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;lettings/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;lettings.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s1">&#39;lettings&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;profiles/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;profiles.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s1">&#39;profiles&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;sentry-test/&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">request</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sentry-test&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># URLs de l&#39;application lettings (lettings/urls.py)</span>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;lettings&#39;</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;int:letting_id&gt;/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">letting</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;letting&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># URLs de l&#39;application profiles (profiles/urls.py)</span>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;profiles&#39;</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&lt;str:username&gt;/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="database.html" class="btn btn-neutral float-left" title="Structure de la base de données" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Guide d’utilisation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2025, AUER Eric.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

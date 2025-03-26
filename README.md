@@ -4,6 +4,10 @@
 
 Site web d'Orange County Lettings, une plateforme de location immobilière.
 
+## Documentation
+
+La documentation technique complète du projet est disponible sur [Read the Docs](https://p13-oc-lettings-auer-eric.readthedocs.io/).
+
 ## Développement local
 
 ### Prérequis
