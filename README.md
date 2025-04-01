@@ -24,7 +24,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 #### Cloner le repository
 
 - `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+- `git clone https://github.com/Kudzu86/P13`
 
 #### Créer l'environnement virtuel
 
@@ -65,8 +65,10 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - Ouvrir une session shell `sqlite3`
 - Se connecter à la base de données `.open oc-lettings-site.sqlite3`
 - Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
+- Afficher les colonnes dans le tableau des profils, `pragma table_info(profiles_profile);`
+- Lancer une requête sur la table des profils, `select user_id, favorite_city from profiles_profile where favorite_city like 'B%';`
+- Afficher les colonnes dans le tableau des adresses, pragma table_info(lettings_address);
+- Lancer une requête sur la table des adresses, select number, street, city from lettings_address where city like 'B%';
 - `.quit` pour quitter
 
 #### Panel d'administration
@@ -117,10 +119,15 @@ Pour que l'application fonctionne correctement en production, configurez les var
 3. GitHub Actions exécutera automatiquement les tests, construira l'image, la publiera sur Docker Hub et déploiera sur Render
 
 #### Déploiement manuel
-Pour extraire et exécuter l'image Docker en local:
+Pour extraire et exécuter l'image Docker en local, vous devez d'abord installer Docker Desktop. 
+Une fois Docker installé et en cours d'exécution, utilisez les commandes suivantes:
+
 ```bash
 # Extraire l'image depuis Docker Hub
 docker pull kudzuu/oc-lettings:latest
 
 # Exécuter l'image
-docker run -p 8000:8000 -e PORT=8000 -e DEBUG=True -e SECRET_KEY=your-secret-key -e ALLOWED_HOSTS=localhost,127.0.0.1 kudzuu/oc-lettings:latest
+docker run -p 8000:8000 -e DEBUG=False -e SECRET_KEY=my-secret-key -e ALLOWED_HOSTS=localhost,127.0.0.1 kudzuu/oc-lettings:latest gunicorn --bind 0.0.0.0:8000 oc_lettings_site.wsgi:application
+```
+
+Une fois le conteneur démarré, vous pouvez accéder à l'application à l'adresse http://localhost:8000 dans votre navigateur.

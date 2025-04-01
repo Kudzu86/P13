@@ -123,9 +123,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # Configuration WhiteNoise pour la compression et la mise en cache
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# Forcer le mode DEBUG (pour tester)
-DEBUG = True
-
 # Charger les variables d'environnement
 load_dotenv()
 
